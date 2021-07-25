@@ -1,44 +1,55 @@
-﻿using System;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApplication1.Models;
+using WebApplication1;
+
 
 namespace NorthWndData
 {
     public class MetodosEmployee
     {
-        private NorthWndEntities1 db = new NorthWndEntities1();
+        private NorthWndEntities db = new NorthWndEntities();
 
         // GET: api/Employees1
-        public List<DetailsNames> GetEmployees()
+        public List<Employee> GetEmployees(string nombre, string apellido)
         {
             var getEmpleados = db.Employees.ToList();
-            var res = new List<DetailsNames>();
+           
+            var res = new List<Employee>();
             var jefes = new List<int?>();
-            
-                
-            
-             
+            var nombres = new List<NombresEmpleados>();
+
             foreach (var emp in getEmpleados)
             {
-                res.Add(new DetailsNames 
+                res.Add(new Employee
                 {
                     
                     FirstName = emp.FirstName,
-                    LastName = emp.LastName
+                    LastName = emp.LastName,
+                    Title = emp.Title,
+                    TitleOfCourtesy = emp.TitleOfCourtesy
                 });
             }
+
             
-            return res;
+            
+            return res ;
         }
 
-        public List<DetailsNames> GetBosses()
+        
+
+        public List<Employee> GetBosses()
         {
             var getEmpleados = db.Employees.ToList();
-            var res = new List<DetailsNames>();
+           
+            var res = new List<Employee>();
             var jefes = new List<int?>();
+            var nombres = new List<NombresEmpleados>()
+                 ;
 
             foreach (var emp in getEmpleados)
             {
@@ -51,11 +62,13 @@ namespace NorthWndData
             {
                 if (jefes.Contains(emp.EmployeeID))
                 {
-                    res.Add(new DetailsNames
+                    res.Add(new Employee
                     {
 
                         FirstName = emp.FirstName,
-                        LastName = emp.LastName
+                        LastName = emp.LastName,
+                        Title = emp.Title,
+                        TitleOfCourtesy = emp.TitleOfCourtesy
                     });
 
                 }

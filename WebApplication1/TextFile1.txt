@@ -1,0 +1,2 @@
+﻿Codigo de commandline para generar clases de las tablas
+Scaffold-DbContext "Server=35.236.5.189;Database=NorthWnd;user id=usuarioTopicos;password=T0pic0s123*;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

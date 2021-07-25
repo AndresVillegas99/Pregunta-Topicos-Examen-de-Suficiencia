@@ -13,10 +13,10 @@ namespace NorthWndData
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class NorthWndEntities1 : DbContext
+    public partial class NorthWndEntities : DbContext
     {
-        public NorthWndEntities1()
-            : base("name=NorthWndEntities1")
+        public NorthWndEntities()
+            : base("name=NorthWndEntities")
         {
         }
     

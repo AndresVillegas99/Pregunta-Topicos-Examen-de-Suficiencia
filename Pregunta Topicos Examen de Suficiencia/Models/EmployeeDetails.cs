@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.Web.UI.WebControls;
 
 namespace Pregunta_Topicos_Examen_de_Suficiencia.Models
 {
-    public class EmployeeDetailsForUpdate
+    public class EmployeeDetails
     {
         public string LastName { get; set; }
 
@@ -35,8 +33,7 @@ namespace Pregunta_Topicos_Examen_de_Suficiencia.Models
 
         public string Extension { get; set; }
 
-        [NotMapped]
-        public Image Photo { get; set; }
+        //public Image Photo { get; set; }
 
         public string Notes { get; set; }
 
