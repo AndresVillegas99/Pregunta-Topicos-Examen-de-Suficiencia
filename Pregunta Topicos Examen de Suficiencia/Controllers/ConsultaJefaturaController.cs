@@ -13,12 +13,16 @@ namespace Pregunta_Topicos_Examen_de_Suficiencia.Controllers
 {
     public class ConsultaJefaturaController : ApiController
     {
-        public List<NombreCompleto> GetEmployees()
+
+        //Este metodo GET trae un solo jefe en una lista, lo busca por nombre y apellido.
+        //Solo puede traer empleados cuyo EmployeeID se encuentre en el ReportTo de otro empleado.
+        [HttpGet]
+        public List<BossDetails> GetEmployees(string nombre, string apellido)
         {
             MetodosEmployee ME = new MetodosEmployee();
-            var lista = ME.GetBosses();
-            var res = new List<Employee>();
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Employee, NameDetails>());
+            var lista = ME.GetBosses(nombre, apellido);
+            var res = new List<BossDetails>();
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Employee, BossDetails>());
             IMapper iMapper = config.CreateMapper();
             var mapa = new Mapper(config);
            
@@ -26,17 +30,57 @@ namespace Pregunta_Topicos_Examen_de_Suficiencia.Controllers
 
             List<NombreCompleto> nombresCompletos = new List<NombreCompleto>();
 
-            List<NameDetails> listNombre = new List<NameDetails>();
+            List<BossDetails> listNombre = new List<BossDetails>();
             foreach (var empleado in lista)
             {
-                var nuevoNombre = mapa.Map<NameDetails>(empleado);
-                NombreCompleto test = new NombreCompleto();
-                string todo = nuevoNombre.TitleOfCourtesy + nuevoNombre.FirstName +" " + nuevoNombre.LastName + "(" + nuevoNombre.Title + ")";
-                test.NombresCompletos = todo;
-                nombresCompletos.Add(test);
+                var nuevoNombre = mapa.Map<BossDetails>(empleado);
+                
+                nuevoNombre.NombreCompleto = NameFormat(empleado);
+                listNombre.Add(nuevoNombre);
+            };
+
+            return listNombre;
+        }
+       /* 
+        * Este mtodo GET trae una lista con todos los jefes que tienen un campo en ReportTo de los empleados
+        * [HttpGet]
+        public List<NombreCompleto> GetEmployees()
+        {
+            MetodosEmployee ME = new MetodosEmployee();
+            var lista = ME.GetAllBosses();
+            var res = new List<BossDetails>();
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Employee, BossDetails>());
+            IMapper iMapper = config.CreateMapper();
+            var mapa = new Mapper(config);
+
+
+
+            List<NombreCompleto> nombresCompletos = new List<NombreCompleto>();
+
+            List<BossDetails> listNombre = new List<BossDetails>();
+            foreach (var empleado in lista)
+            {
+                var nuevoNombre = mapa.Map<BossDetails>(empleado);
+              
+                nuevoNombre.NombreCompleto = NameFormat(empleado);
+                listNombre.Add(nuevoNombre);
             };
 
             return nombresCompletos;
+        }*/
+        private NombreCompleto NameFormat(NameDetails Detalles)
+        {
+            NombreCompleto Nombre = new NombreCompleto();
+            string todo = Detalles.TitleOfCourtesy + Detalles.FirstName + " " + Detalles.LastName + "(" + Detalles.Title + ")";
+            Nombre.NombresCompletos = todo;
+            return Nombre;
+        }
+        private string NameFormat(Employee Detalles)
+        {
+
+            string todo = Detalles.TitleOfCourtesy + Detalles.FirstName + " " + Detalles.LastName + "(" + Detalles.Title + ")";
+
+            return todo;
         }
     }
 }

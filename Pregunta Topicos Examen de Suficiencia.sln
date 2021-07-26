@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pregunta Topicos Examen de 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWndData", "NorthWndData\NorthWndData.csproj", "{5E7C4E9A-CD5A-457F-863D-2975251360BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{B1A0BAF7-F3C5-43D7-9A20-C966BFAC783C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "WebApplication1\Modelo.csproj", "{B1A0BAF7-F3C5-43D7-9A20-C966BFAC783C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

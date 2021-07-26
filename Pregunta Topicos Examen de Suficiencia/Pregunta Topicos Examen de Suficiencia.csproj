@@ -293,11 +293,11 @@
     <Compile Include="Controllers\ConsultaJefaturaController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ConsultaEmpleadosController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BossDetails.cs" />
     <Compile Include="Models\EmployeeDetails.cs" />
     <Compile Include="Models\NameDetails.cs" />
     <Compile Include="Models\EmployeeDetailsForUpdate.cs" />
@@ -393,9 +393,9 @@
       <Project>{5e7c4e9a-cd5a-457f-863d-2975251360bf}</Project>
       <Name>NorthWndData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebApplication1\WebApplication1.csproj">
+    <ProjectReference Include="..\WebApplication1\Modelo.csproj">
       <Project>{b1a0baf7-f3c5-43d7-9a20-c966bfac783c}</Project>
-      <Name>WebApplication1</Name>
+      <Name>Modelo</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

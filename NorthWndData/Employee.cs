@@ -11,7 +11,8 @@ namespace NorthWndData
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -36,6 +37,7 @@ namespace NorthWndData
         public string Country { get; set; }
         public string HomePhone { get; set; }
         public string Extension { get; set; }
+        [NotMapped]
         public byte[] Photo { get; set; }
         public string Notes { get; set; }
         public Nullable<int> ReportsTo { get; set; }
