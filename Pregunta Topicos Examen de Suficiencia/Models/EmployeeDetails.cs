@@ -31,7 +31,7 @@ namespace Pregunta_Topicos_Examen_de_Suficiencia.Models
 
         public string Extension { get; set; }
         [NotMapped]
-        //public byte[] Photo { get; set; }
+        public byte[] Photo { get; set; }
 
         public string Notes { get; set; }
 
